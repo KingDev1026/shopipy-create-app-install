@@ -21,24 +21,13 @@
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-    $gmail = $_POST['mail'];
-    $query = "select * from testshopify where gmail='" . $gmail ."'";
-    $result = $conn->query($query);
-    if ($result->num_rows > 0) 
-        echo "repeat";
-    else{
-        $query = "select * from discount_code order by iindexid DESC limit 1";
-        $result = $conn->query($query);
-        $discount_code = "";
-        while($row = $result->fetch_assoc()) {
-            $discount_code = $row["cur_discount_code"];
-        }
-        $query = "insert into testshopify (gmail, discount_code) values('". $gmail . "', '". $discount_code . "')";
-        if($conn->query($query) === true){
-            echo $discount_code;
-        }
-        else
-            echo "failed";
-    }
+    $discount = $_POST['discount'];
+    $shop_name = $_POST['shop_name'];
+    
+    $query = "insert into discount_code (cur_discount_code, shop_name) values('". $discount . "', '" . $shop_name . "')";
+    if($conn->query($query) === true)
+        echo "success";
+    else
+        echo "faild";
     $conn->close();
 ?>

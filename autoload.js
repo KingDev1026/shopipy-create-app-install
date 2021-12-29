@@ -19,6 +19,7 @@ function subscribe () {
         alert("reinsert gmail.");
         return;
     }
+    
     $.ajax({
       url: "https://localhost/myshopifyfirstapp/save.php",
       type: 'POST',
@@ -26,7 +27,12 @@ function subscribe () {
         mail: mail
       },
       success: function (data) {
-        alert(data)
+        if(data == "repeat")
+            alert("registered!");
+        else if(data == "faild")
+            alert("Faild Database.")
+        else
+            alert(data);
       },
       error: function (error) {
           console.log(error)
