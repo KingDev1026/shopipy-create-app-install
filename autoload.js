@@ -14,39 +14,36 @@ function validate(str){
     return flag;
 }
 function subscribe () {
-    var a = window.prompt("title", "");
-    if(!validate(a)){
+    var mail = window.prompt("title", "");
+    if(!validate(mail)){
         alert("reinsert gmail.");
         return;
     }
-    $.post("https://localhost/myshopifyfirstapp/save.php?gmail=" + a, { }, function(data){
-        alert(data);
-        if(data == "repeat")
-            alert("registered!");
-        else if(data == "faild")
-            alert("Faild Database.")
-        else
-            alert(data);
-    });
+    $.ajax({
+      url: "https://localhost/myshopifyfirstapp/save.php",
+      type: 'POST',
+      data: {
+        mail: mail
+      },
+      success: function (data) {
+        alert(data)
+      },
+      error: function (error) {
+          console.log(error)
+      }
+  });
 }
-
-
-$(document).ready(function() {
-    
+$(document).ready(function() {    
     var modal = makeModal();
     document.body.insertAdjacentHTML('beforeend', modal);
     $(modal).modal('show');
-    // setListener(modal);
-
     addHeadTag('link', {
         rel: 'stylesheet',
         href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',
     });
-
     function makeModal() {
         return `<div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-      
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
@@ -60,12 +57,8 @@ $(document).ready(function() {
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
-      
         </div>
       </div>
       `;
     }
-    
-    setListener(m1);
-    
 });
