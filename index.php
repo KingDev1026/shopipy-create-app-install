@@ -15,34 +15,6 @@
   <!-- <form> -->
     <ul class="list-group">
     <?php
-    function getShopName(){
-      // echo "==============curl start==============<br>"; 
-      $curl = curl_init();
-
-      curl_setopt_array($curl, array(
-      CURLOPT_URL => 'https://pufferdev.myshopify.com/admin/api/2021-10/shop.json',
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_ENCODING => '',
-      CURLOPT_MAXREDIRS => 10,
-      CURLOPT_TIMEOUT => 0,
-      CURLOPT_FOLLOWLOCATION => true,
-      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      CURLOPT_CUSTOMREQUEST => 'GET',
-      // CURLOPT_POSTFIELDS =>'{"script_tag":{"event":"onload","src":"https:\/\/localhost\/autoload.js"}}',
-      CURLOPT_HTTPHEADER => array(
-        'X-Shopify-Access-Token: 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',
-        'Content-Type: application/json'
-        ),
-      ));
-
-      $response = curl_exec($curl);
-        $status_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-      curl_close($curl);
-      $res = json_decode($response);
-      return $res->shop->domain;
-      // echo "==============curl end==============<br>";
-    } 
 
     function getDiscounts($_price_rul_id){
       // echo "==============curl start==============<br>"; 
