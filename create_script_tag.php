@@ -14,7 +14,7 @@ echo "==============curl start==============<br>";
 	CURLOPT_CUSTOMREQUEST => 'POST',
 	CURLOPT_POSTFIELDS =>'{"script_tag":{"event":"onload","src":"https:\/\/localhost\/myshopifyfirstapp\/autoload.js"}}',
 	CURLOPT_HTTPHEADER => array(
-		'X-Shopify-Access-Token: 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',
+		'X-Shopify-Access-Token: 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',
 		'Content-Type: application/json'
 	),
 	));

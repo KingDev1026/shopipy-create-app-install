@@ -27,15 +27,9 @@
     if ($result->num_rows > 0) 
         echo "repeat";
     else{
-        $query = "select * from discount_code order by iindexid DESC limit 1";
-        $result = $conn->query($query);
-        $discount_code = "";
-        while($row = $result->fetch_assoc()) {
-            $discount_code = $row["cur_discount_code"];
-        }
-        $query = "insert into testshopify (gmail, discount_code) values('". $gmail . "', '". $discount_code . "')";
+        $query = "insert into testshopify (gmail, discount_code) values('". $gmail . "', '57TCTHPK76BZ')";
         if($conn->query($query) === true){
-            echo $discount_code;
+            echo "57TCTHPK76BZ";
         }
         else
             echo "failed";
